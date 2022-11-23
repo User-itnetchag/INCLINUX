@@ -1,0 +1,21 @@
+Installation TP-Link Omada sur Ubuntu 20.04
+*******************************************
+
+Omada_SDN_Controller_v5.7.4_Linux_x64
+
+Ces instructions détaillent comment installer le contrôleur logiciel TP-Link Omada sur Ubuntu 20.04.
+
+sudo apt update && sudo apt install openssh-server -y
+sudo apt update && sudo apt install openjdk-8-jre-headless jsvc curl -y
+sudo apt -y install gnupg2
+curl -fsSL https://www.mongodb.org/static/pgp/server-4.4.asc | sudo apt-key add -
+echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu focal/mongodb-org/4.4 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-4.4.list
+sudo apt update && sudo apt install mongodb-org
+sudo systemctl start mongod.service
+sudo systemctl status mongod
+sudo systemctl enable mongod
+sudo wget https://static.tp-link.com/upload/software/2022/202211/20221121/Omada_SDN_Controller_v5.7.4_Linux_x64.tar.gz
+tar zxvf Omada_SDN_Controller_v5.7.4_Linux_x64.tar.gz
+cd Omada_SDN_Controller_v5.7.4_Linux_x64/
+sudo bash ./install.sh
+Naviguez vers http://[IP_DE_TON_SERVER:8088
